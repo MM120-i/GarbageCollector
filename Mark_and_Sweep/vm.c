@@ -4,6 +4,21 @@
 
 #include "vm.h"
 #include "snekobject.h"
+#include "stack.h"
+
+// this the function that runs the gc! (omg wow)
+void vm_collect_garbage(vm_t *vm)
+{
+    if (!vm)
+    {
+        perror("vm is null\n");
+        return;
+    }
+
+    mark(vm);
+    trace(vm);
+    sweep(vm);
+}
 
 vm_t *vm_new(void)
 {
@@ -233,4 +248,30 @@ void trace_mark_object(stack_t *gray_objects, snek_object_t *obj)
 
     obj->is_marked = true;
     stack_push(gray_objects, (void *)obj);
+}
+
+void sweep(vm_t *vm)
+{
+    if (!vm)
+    {
+        perror("vm is null\n");
+        return;
+    }
+
+    for (size_t i = 0; i < vm->objects->count; i++)
+    {
+        snek_object_t *object = vm->objects->data[i];
+
+        if (object && object->is_marked)
+        {
+            object->is_marked = false;
+        }
+        else
+        {
+            snek_object_free(object);
+            vm->objects->data[i] = NULL;
+        }
+    }
+
+    stack_remove_nulls(vm->objects);
 }

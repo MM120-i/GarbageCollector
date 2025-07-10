@@ -26,3 +26,5 @@ void mark(vm_t *);
 void trace(vm_t *);
 void trace_blacken_object(stack_t *, snek_object_t *);
 void trace_mark_object(stack_t *, snek_object_t *);
+void vm_collect_garbage(vm_t *);
+void sweep(vm_t *);
