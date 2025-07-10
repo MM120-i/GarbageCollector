@@ -1,7 +1,10 @@
+#pragma once
+
 #include <stdbool.h>
 #include <stddef.h>
 
 #include "stack.h"
+#include "vm.h"
 
 typedef struct SnekObject snek_object_t;
 
@@ -45,3 +48,6 @@ typedef struct SnekObject
 } snek_object_t;
 
 void snek_object_free(snek_object_t *);
+bool snek_array_set(snek_object_t *, size_t, snek_object_t *);
+snek_object_t *snek_array_get(snek_object_t *, size_t);
+snek_object_t *snek_add(vm_t *, snek_object_t *, snek_object_t *);

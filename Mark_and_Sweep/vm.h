@@ -23,3 +23,6 @@ void vm_frame_push(vm_t *, frame_t *);
 void vm_track_object(vm_t *, snek_object_t *);
 void frame_reference_object(frame_t *, snek_object_t *);
 void mark(vm_t *);
+void trace(vm_t *);
+void trace_blacken_object(stack_t *, snek_object_t *);
+void trace_mark_object(stack_t *, snek_object_t *);

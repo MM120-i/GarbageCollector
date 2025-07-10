@@ -149,3 +149,88 @@ void mark(vm_t *vm)
         }
     }
 }
+
+void trace(vm_t *vm)
+{
+    if (!vm)
+    {
+        perror("vm is null");
+        return;
+    }
+
+    stack_t *gray_objects = stack_new(INITIAL_CAPACITY);
+
+    if (!gray_objects)
+    {
+        perror("stack is null\n");
+        return;
+    }
+
+    for (size_t i = 0; i < vm->objects->count; i++)
+    {
+        snek_object_t *object = vm->objects->data[i];
+
+        if (object && object->is_marked)
+        {
+            stack_push(gray_objects, (void *)object);
+        }
+    }
+
+    while (gray_objects->count > 0)
+    {
+        snek_object_t *poppedObject = stack_pop(gray_objects);
+        trace_blacken_object(gray_objects, poppedObject);
+    }
+
+    stack_free(gray_objects);
+}
+
+void trace_blacken_object(stack_t *gray_objects, snek_object_t *obj)
+{
+
+    if (!obj)
+    {
+        perror("obj is null\n");
+        return;
+    }
+
+    switch (obj->kind)
+    {
+    case INTEGER:
+    case FLOAT:
+    case STRING:
+        return;
+
+    case VECTOR3:
+        trace_mark_object(gray_objects, obj->data.v_vector3.x);
+        trace_mark_object(gray_objects, obj->data.v_vector3.y);
+        trace_mark_object(gray_objects, obj->data.v_vector3.z);
+        break;
+
+    case ARRAY:
+
+        for (size_t i = 0; i < obj->data.v_array.size; i++)
+        {
+            trace_mark_object(gray_objects, snek_array_get(obj, i));
+        }
+
+        break;
+    }
+}
+
+void trace_mark_object(stack_t *gray_objects, snek_object_t *obj)
+{
+    if (!obj)
+    {
+        perror("Obj is null\n");
+        return;
+    }
+
+    if (obj->is_marked)
+    {
+        return;
+    }
+
+    obj->is_marked = true;
+    stack_push(gray_objects, (void *)obj);
+}
