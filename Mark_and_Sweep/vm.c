@@ -129,3 +129,23 @@ void frame_reference_object(frame_t *frame, snek_object_t *obj)
 
     stack_push(frame->references, (void *)obj);
 }
+
+void mark(vm_t *vm)
+{
+    if (!vm)
+    {
+        perror("vm is null\n");
+        return;
+    }
+
+    for (size_t i = 0; i < vm->frames->count; i++)
+    {
+        frame_t *frame = vm->frames->data[i];
+
+        for (size_t j = 0; j < frame->references->count; j++)
+        {
+            snek_object_t *object = frame->references->data[j];
+            object->is_marked = true;
+        }
+    }
+}

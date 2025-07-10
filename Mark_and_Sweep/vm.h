@@ -22,3 +22,4 @@ frame_t *vm_new_frame(vm_t *);
 void vm_frame_push(vm_t *, frame_t *);
 void vm_track_object(vm_t *, snek_object_t *);
 void frame_reference_object(frame_t *, snek_object_t *);
+void mark(vm_t *);
