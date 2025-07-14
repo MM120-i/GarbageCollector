@@ -4,9 +4,9 @@
 #include <stddef.h>
 
 #include "stack.h"
-#include "vm.h"
 
 typedef struct SnekObject snek_object_t;
+typedef struct VirtualMachine vm_t;
 
 typedef struct
 {

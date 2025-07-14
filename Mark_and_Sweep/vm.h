@@ -1,8 +1,9 @@
 #pragma once
 
 #include "stack.h"
+#include "snekobject.h"
 
-size_t INITIAL_CAPACITY = 8;
+#define INITIAL_CAPACITY 8
 
 typedef struct VirtualMachine
 {
