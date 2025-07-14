@@ -19,7 +19,7 @@ int main(void)
     // ====================================================================================================
     // Test case 1: Create and Collect a single integer
     snek_object_t *integerObject = new_snek_integer(virtualMachine, 42);
-    printf("Created integer object at %p\n", (void *)integerObject);
+    printf("\nCreated integer object at %p\n", (void *)integerObject);
     vm_collect_garbage(virtualMachine);
 
     // ====================================================================================================
