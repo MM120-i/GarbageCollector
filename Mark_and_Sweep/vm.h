@@ -5,11 +5,11 @@
 
 #define INITIAL_CAPACITY 8
 
-typedef struct VirtualMachine
+struct VirtualMachine
 {
     stack_t *frames;
     stack_t *objects;
-} vm_t;
+};
 
 typedef struct StackFrame
 {

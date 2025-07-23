@@ -6,7 +6,7 @@
 #include "vm.h"
 #include "snekobject.h"
 
-snek_object_t *_new_snek_integer(vm_t *vm, int value)
+snek_object_t *_new_snek_integer(vm_t *vm)
 {
     snek_object_t *object = (snek_object_t *)calloc(1, sizeof(snek_object_t));
 

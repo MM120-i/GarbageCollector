@@ -39,13 +39,13 @@ typedef union SnekObjectData
   snek_array_t v_array;
 } snek_object_data_t;
 
-typedef struct SnekObject
+struct SnekObject
 {
   bool is_marked;
 
   snek_object_kind_t kind;
   snek_object_data_t data;
-} snek_object_t;
+};
 
 void snek_object_free(snek_object_t *);
 bool snek_array_set(snek_object_t *, size_t, snek_object_t *);
