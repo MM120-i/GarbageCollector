@@ -2,6 +2,15 @@
 
 #include "stack.h"
 
+/**
+ * @brief Pushes an object onto the stack.
+ *
+ * If the stack is full, its capacity is doubled and memory is reallocated.
+ * Exits the program if memory allocation fails.
+ *
+ * @param stack Pointer to the stack structure.
+ * @param object Pointer to the object to be pushed onto the stack.
+ */
 void stack_push(stack_t *stack, void *object)
 {
     if (stack->count == stack->capacity)
@@ -23,6 +32,12 @@ void stack_push(stack_t *stack, void *object)
     return;
 }
 
+/**
+ * Pops an element from the top of the stack.
+ *
+ * @param stack Pointer to the stack structure.
+ * @return Pointer to the popped element, or NULL if the stack is empty.
+ */
 void *stack_pop(stack_t *stack)
 {
     if (stack->count == 0)
@@ -35,6 +50,11 @@ void *stack_pop(stack_t *stack)
     return stack->data[stack->count];
 }
 
+/**
+ * Frees the memory allocated for a stack.
+ *
+ * @param stack Pointer to the stack to be freed.
+ */
 void stack_free(stack_t *stack)
 {
     if (stack == NULL)
