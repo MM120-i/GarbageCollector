@@ -17,7 +17,6 @@ snek_object_t *_new_snek_integer(vm_t *vm)
     }
 
     vm_track_object(vm, object);
-
     return object;
 }
 
