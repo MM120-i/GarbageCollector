@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\GarbageCollector.dir/objects.a
-C:\MinGW\bin\ar.exe qc CMakeFiles\GarbageCollector.dir/objects.a @CMakeFiles\GarbageCollector.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe -Wl,--whole-archive CMakeFiles\GarbageCollector.dir/objects.a -Wl,--no-whole-archive -o GarbageCollector.exe -Wl,--out-implib,libGarbageCollector.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GarbageCollector.dir\linkLibs.rsp
