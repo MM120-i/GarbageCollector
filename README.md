@@ -76,5 +76,3 @@ As a foundation, this project also includes a **Reference Counting (RefCount) al
 - You can modify `testCases.c` to add your own objects and test scenarios.
 
 ---
-
-Note: Project is still getting changes... so like
