@@ -14,7 +14,7 @@ Manual memory management in C is error-prone and can lead to memory leaks or dan
 
 ### Reference Counting
 
-As a foundation, this project also includes a **Reference Counting (RefCount) algorithm**. RefCount is a very basic form of garbage collection, mainly used here for educational purposes. It helps illustrate the concept of tracking object references, but it is not robust enough for real-world use (e.g., it cannot handle cyclic references). The Mark and Sweep implementation builds upon this base to provide a more practical and complete solution.
+As a foundation, this project also includes a **Reference Counting (RefCount) algorithm**. RefCount is a very basic form of garbage collection. It helps illustrate the concept of tracking object references, but it is not enough for real-world use (e.g., it cannot handle cyclic references). The Mark and Sweep implementation builds upon this base to provide a more practical and complete solution.
 
 ## Quick Start
 
